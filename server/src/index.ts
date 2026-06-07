@@ -126,10 +126,13 @@ function putCached(key: string, val: AppJSON): void {
 
 // --- Middleware ---
 
-// Accept any localhost origin so Vite's port doesn't matter (5173, 5174, 5175, etc.)
+// Serve built React client in production (before CORS so static assets bypass CORS checks)
+app.use(express.static(path.join(__dirname, '../../client/dist')));
+
+// Accept localhost (dev) and production domains
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin)) {
+    if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin) || /\.railway\.app$/.test(origin) || /crazy\.rip$/.test(origin)) {
       callback(null, true);
     } else {
       callback(new Error(`CORS: origin ${origin} not allowed`));
@@ -137,9 +140,6 @@ app.use(cors({
   },
   credentials: true,
 }));
-
-// Serve built React client in production
-app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.use(express.json({ limit: '2mb' }));
 
