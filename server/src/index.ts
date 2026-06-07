@@ -1,3 +1,4 @@
+import path from 'path';
 import express, { Request, Response, NextFunction } from 'express';
 import session from 'express-session';
 import cors from 'cors';
@@ -136,6 +137,9 @@ app.use(cors({
   },
   credentials: true,
 }));
+
+// Serve built React client in production
+app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 app.use(express.json({ limit: '2mb' }));
 
@@ -549,6 +553,11 @@ app.post('/api/search-suggestions', requireAuth, async (req: Request, res: Respo
     console.error('[VermOS] Suggestions error:', err);
     res.json({ suggestions: [] });
   }
+});
+
+// --- Catch-all: serve React index.html for client-side routing ---
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
 });
 
 // --- Start server ---
