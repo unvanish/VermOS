@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "npx concurrently --names \"server,client\" --prefix-colors \"blue,cyan\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
-    "build": "npm run build --prefix client",
+    "build": "npm run build --prefix server && npm run build --prefix client",
+    "start": "npm run start --prefix server",
     "postinstall": "npm install --prefix server && npm install --prefix client"
   },
   "devDependencies": {
