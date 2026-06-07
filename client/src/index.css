@@ -1,0 +1,52 @@
+:root {
+  --aero-blue: #1a5fb4;
+  --aero-blue-dark: #083f99;
+  --aero-blue-light: #4a90d9;
+  --aero-taskbar-bg: rgba(0, 0, 0, 0.72);
+  --window-title-gradient: linear-gradient(180deg, #5b9ad1 0%, #3a7bc1 35%, #2567b4 70%, #1a56a4 100%);
+  --window-bg: #f0f0f0;
+  --font-ui: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Animations */
+@keyframes vermos-progress {
+  0% { transform: translateX(-200%); }
+  100% { transform: translateX(400%); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96) translateY(4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUpMenu {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Windows 7-style scrollbar */
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track { background: #f1f1f1; border: 1px solid #ddd; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #c8d8e8 0%, #a8c0d4 50%, #90aec4 100%);
+  border: 1px solid #7090b0;
+  border-radius: 2px;
+  min-height: 30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #b8ccdf 0%, #94b2cc 50%, #7898bc 100%);
+}
+::-webkit-scrollbar-corner { background: #f1f1f1; }
+
+/* Focus rings */
+*:focus-visible { outline: 2px solid #4a90d9; outline-offset: 1px; }

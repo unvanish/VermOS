@@ -1,0 +1,14 @@
+{
+  "name": "vermos",
+  "version": "1.0.0",
+  "description": "VermOS — AI-generated Windows 7-inspired browser OS",
+  "private": true,
+  "scripts": {
+    "dev": "npx concurrently --names \"server,client\" --prefix-colors \"blue,cyan\" \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client",
+    "postinstall": "npm install --prefix server && npm install --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
